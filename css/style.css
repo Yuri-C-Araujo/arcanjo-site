@@ -226,14 +226,14 @@ footer {
     }
 
     nav ul {
-        flex-direction: row; /* 🔥 muda aqui */
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 10px;
     }
 
     nav li {
-        margin: 5px 10px; /* 🔥 reduz espaçamento */
+        margin: 5px 10px;
     }
 
     nav a {
@@ -251,11 +251,6 @@ footer {
     }
 }
 
-/* ==========================================================================
-   NOVOS ESTILOS: FEEDBACK DO FORMULÁRIO (CONTATO) E NEWSLETTER (HOME)
-   ========================================================================== */
-
-/* Elemento Select do formulário */
 select {
     width: 100%;
     padding: 10px;
@@ -266,7 +261,6 @@ select {
     border-radius: 5px;
 }
 
-/* Sistema de alertas do JavaScript */
 .mensagem-alerta {
     padding: 10px;
     margin-bottom: 15px;
@@ -285,7 +279,6 @@ select {
     color: black;
 }
 
-/* Seção da Newsletter (Home) */
 .newsletter {
     border-top: 1px solid rgba(0,81,255,0.2);
     padding-top: 40px;
