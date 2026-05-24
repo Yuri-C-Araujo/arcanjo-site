@@ -5,54 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Arcanjo</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .mensagem-alerta {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: none;
+            font-weight: bold;
+        }
+        .erro {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .sucesso {
+            background-color: #00c3ff;
+            color: black;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background: #000;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
 <header class="header">
     <div class="container-header">
-
         <div class="logo-area">
             <img src="img/Arcanjos-logo.jpeg" alt="Logo Arcanjo">
             <h1>Arcanjo - Soluções Tecnológicas</h1>
         </div>
-
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="servicos.html">Serviços</a></li>
                 <li><a href="contato.html" class="ativo">Contato</a></li>
-                <li><a href="tarefas.html">Tarefas JS</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
 <main class="conteudo">
+    <h2>Solicitação de Serviço / Suporte</h2>
+    <p>Preencha os dados abaixo para abertura de chamado ou orçamento técnico.</p>
 
-    <h2>Fale Conosco</h2>
+    <div id="feedback-sistema" class="mensagem-alerta"></div>
 
-    <p>Preencha o formulário abaixo e entraremos em contato.</p>
+    <form id="formContato" onsubmit="return validarFormulario(event)">
+        <label for="nome">Nome Completo</label>
+        <input type="text" id="nome">
 
-    <form>
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" required>
+        <label for="email">E-mail Corporativo</label>
+        <input type="text" id="email">
 
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
+        <label for="servico">Tipo de Serviço Necessário</label>
+        <select id="servico">
+            <option value="">-- Selecione uma opção --</option>
+            <option value="suporte">Suporte Técnico de TI</option>
+            <option value="redes">Configuração de Redes</option>
+            <option value="hardware">Manutenção de Hardware</option>
+            <option value="ia">Automação com IA</option>
+        </select>
 
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" rows="5" required></textarea>
+        <label for="mensagem">Detalhes do Chamado / Problema</label>
+        <textarea id="mensagem" rows="5"></textarea>
 
-        <button type="submit">Enviar</button>
+        <button type="submit">Enviar Solicitação</button>
     </form>
-
 </main>
 
 <footer>
     <p>&copy; 2026 Arcanjo - Soluções Tecnológicas</p>
 </footer>
+
+<script>
+function validarFormulario(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const servico = document.getElementById('servico').value;
+    const mensagem = document.getElementById('mensagem').value.trim();
+    const feedback = document.getElementById('feedback-sistema');
+
+    feedback.style.display = "none";
+    feedback.className = "mensagem-alerta";
+
+    if (nome === "" || email === "" || servico === "" || mensagem === "") {
+        feedback.innerText = "Erro: Todos os campos do formulário são obrigatórios!";
+        feedback.classList.add("erro");
+        feedback.style.display = "block";
+        return false;
+    }
+
+    if (!nome.includes(" ")) {
+        feedback.innerText = "Erro: Por favor, digite seu nome completo (Nome e Sobrenome).";
+        feedback.classList.add("erro");
+        feedback.style.display = "block";
+        return false;
+    }
+
+    if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        feedback.innerText = "Erro: Insira um endereço de e-mail válido.";
+        feedback.classList.add("erro");
+        feedback.style.display = "block";
+        return false;
+    }
+
+    feedback.innerText = "Sucesso! Sua solicitação de suporte foi registrada. Entraremos em contato em breve.";
+    feedback.classList.add("sucesso");
+    feedback.style.display = "block";
+
+    document.getElementById('formContato').reset();
+    return true;
+}
+</script>
 
 </body>
 </html>
