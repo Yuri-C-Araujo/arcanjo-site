@@ -250,3 +250,68 @@ footer {
         align-items: center;
     }
 }
+
+/* ==========================================================================
+   NOVOS ESTILOS: FEEDBACK DO FORMULÁRIO (CONTATO) E NEWSLETTER (HOME)
+   ========================================================================== */
+
+/* Elemento Select do formulário */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #000;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Sistema de alertas do JavaScript */
+.mensagem-alerta {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: none;
+    font-weight: bold;
+}
+
+.erro {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.sucesso {
+    background-color: #00c3ff;
+    color: black;
+}
+
+/* Seção da Newsletter (Home) */
+.newsletter {
+    border-top: 1px solid rgba(0,81,255,0.2);
+    padding-top: 40px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.newsletter h2, .newsletter p {
+    text-align: center;
+}
+
+.newsletter-container {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.newsletter-container input,
+.newsletter-container button {
+    margin-top: 0;
+}
+
+.newsletter-container button {
+    width: auto;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
